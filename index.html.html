@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thala Forever — A Tribute to MS Dhoni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1630; --navy2:#0f2147; --gold:#f5c518; --gold2:#ffdf6b;
+  --blue:#1e6fff; --sky:#5aa9ff; --white:#f4f7ff; --muted:#9fb0d0; --green:#1f8f4e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,.bebas{font-family:'Bebas Neue',sans-serif;letter-spacing:1px;font-weight:400}
+a{color:var(--gold)}
+section{padding:90px 6vw;position:relative}
+.wrap{max-width:1150px;margin:0 auto}
+.eyebrow{color:var(--gold);letter-spacing:4px;text-transform:uppercase;font-size:.8rem;font-weight:600}
+h2{font-size:clamp(2.4rem,6vw,4rem);line-height:1;margin:.3em 0 .5em}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:rgba(10,22,48,.75);backdrop-filter:blur(10px);border-bottom:1px solid rgba(245,197,24,.15)}
+nav .logo{font-family:'Bebas Neue';font-size:1.6rem;color:var(--gold)}
+nav .logo span{color:var(--white)}
+nav ul{display:flex;gap:22px;list-style:none}
+nav a{color:var(--white);text-decoration:none;font-size:.9rem;opacity:.8;transition:.2s}
+nav a:hover{opacity:1;color:var(--gold)}
+@media(max-width:760px){nav ul{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 110%,#1d4fbf 0%,transparent 60%),radial-gradient(ellipse at 50% -20%,#16306a 0%,var(--navy) 70%)}
+.hero svg.stadium{position:absolute;inset:auto 0 0 0;width:100%;height:auto;opacity:.9}
+.lights{position:absolute;top:8%;width:100%;display:flex;justify-content:space-between;padding:0 6vw}
+.light{width:70px;height:26px;border-radius:6px;background:repeating-linear-gradient(90deg,#fff 0 8px,#cfe3ff 8px 10px);box-shadow:0 0 60px 30px rgba(200,225,255,.35);animation:flick 4s infinite}
+.light:nth-child(2){animation-delay:1.3s}
+@keyframes flick{0%,100%{opacity:1}50%{opacity:.75}}
+.hero-content{position:relative;z-index:2;padding-top:40px}
+.big7{font-family:'Bebas Neue';font-size:clamp(14rem,40vw,30rem);line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(245,197,24,.25);position:absolute;left:50%;top:50%;transform:translate(-50%,-58%);z-index:-1;user-select:none}
+.hero h1{font-size:clamp(3.5rem,11vw,8.5rem);line-height:.9;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.tag{font-size:clamp(1rem,2.2vw,1.35rem);color:var(--muted);margin-top:14px;font-weight:300}
+.typed{color:var(--gold2);font-weight:600;border-right:2px solid var(--gold);padding-right:4px;animation:caret 1s step-end infinite}
+@keyframes caret{50%{border-color:transparent}}
+.btns{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{border:0;cursor:pointer;font:600 1rem 'Outfit';padding:14px 28px;border-radius:40px;transition:.25s;text-decoration:none}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn.gold:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(245,197,24,.4)}
+.btn.ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.35)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:.75rem;letter-spacing:3px;color:var(--muted);z-index:3;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translate(-50%,8px)}}
+
+/* NEWS BANNER */
+.banner{background:linear-gradient(90deg,var(--gold),#ffb300);color:var(--navy);padding:14px 0;overflow:hidden;white-space:nowrap;font-weight:600}
+.banner .track{display:inline-block;animation:marq 32s linear infinite}
+.banner span{margin:0 40px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* COUNTERS */
+.counters{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:20px}
+.counter{background:linear-gradient(160deg,var(--navy2),#0b1a3a);border:1px solid rgba(90,169,255,.18);border-radius:18px;padding:28px 22px;text-align:center;transition:.3s}
+.counter:hover{transform:translateY(-6px);border-color:var(--gold)}
+.counter .num{font-family:'Bebas Neue';font-size:3.6rem;color:var(--gold);line-height:1}
+.counter .lbl{color:var(--muted);font-size:.9rem}
+
+/* STORY / ART */
+.story{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center}
+@media(max-width:860px){.story{grid-template-columns:1fr}}
+.story p{color:#c9d5ee;margin-bottom:1em;font-size:1.05rem}
+.art-card{background:radial-gradient(circle at 50% 40%,#1b3f8f,#0a1630 75%);border-radius:26px;padding:20px;border:1px solid rgba(245,197,24,.2);position:relative;overflow:hidden}
+.art-card svg{width:100%;height:auto;display:block}
+.art-cap{text-align:center;color:var(--muted);font-size:.85rem;margin-top:6px}
+.jersey-card{padding:30px 20px 18px}
+.jersey{position:relative;width:min(100%,380px);aspect-ratio:400/430;margin:0 auto;cursor:pointer;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.4,.2,.2,1);animation:sway 5s ease-in-out infinite;transform-origin:50% 2%}
+.jersey.flipped{transform:rotateY(180deg)}
+.jface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;filter:drop-shadow(0 20px 30px rgba(0,0,0,.5))}
+.jfront{transform:rotateY(180deg)}
+.jface svg{width:100%;height:100%}
+@keyframes sway{0%,100%{rotate:-2deg}50%{rotate:2deg}}
+.jersey.wave{animation:wave 1.2s ease-in-out}
+@keyframes wave{0%,100%{rotate:0deg}25%{rotate:-10deg}75%{rotate:10deg}}
+.name-form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.name-form input{background:var(--navy2);border:1.5px solid rgba(255,255,255,.15);border-radius:30px;padding:12px 18px;color:var(--white);font:400 .95rem 'Outfit';min-width:200px}
+.name-form input:focus{outline:none;border-color:var(--gold)}
+.name-form .btn{padding:11px 20px}
+
+/* JOURNEY (cinematic) */
+#journey{overflow:hidden;transition:background 1s}
+.jr{display:grid;grid-template-columns:1.15fr 1fr;gap:46px;align-items:center;margin-top:10px}
+@media(max-width:860px){.jr{grid-template-columns:1fr;gap:26px}}
+.stage{position:relative;aspect-ratio:4/3;border-radius:26px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(245,197,24,.25);background:#0f2147}
+.stage .scene{position:absolute;inset:0;width:100%;height:100%;transition:opacity .7s,transform 6s ease-out}
+.stage.anim .scene{transform:scale(1.08)}
+/* Dhoni photo frame (one per chapter) */
+.pframe{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold2);overflow:hidden;z-index:1;text-align:center;transition:inset .4s,border-radius .4s}
+.pframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:none;transition:transform 6s ease-out}
+.stage.anim .pframe img{transform:scale(1.06)}
+.pframe.filled img{display:block}
+.stage .shade{z-index:2}
+.stage .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(5,12,28,.85));pointer-events:none}
+.stage .yr{position:absolute;left:22px;bottom:4px;font-family:'Bebas Neue';font-size:clamp(4rem,10vw,7.5rem);line-height:1;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.6);pointer-events:none}
+.jtext .era{color:var(--gold);letter-spacing:3px;font-size:.8rem;text-transform:uppercase;font-weight:600}
+.jtext h3{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1;margin:.25em 0 .4em}
+.jtext p{color:#c9d5ee;font-size:1.08rem}
+.jstat{display:inline-flex;align-items:baseline;gap:10px;margin-top:20px;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.35);border-radius:14px;padding:12px 18px}
+.jstat b{font-family:'Bebas Neue';font-size:2.4rem;color:var(--gold);line-height:1}
+.jstat span{color:var(--muted);font-size:.9rem}
+.jtext>*{transition:opacity .45s,transform .45s}
+.jtext.out>*{opacity:0;transform:translateX(30px)}
+.jctrl{display:flex;gap:10px;margin-top:26px;align-items:center}
+.circ{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:1.2rem;cursor:pointer;transition:.2s}
+.circ:hover{border-color:var(--gold);color:var(--gold)}
+.jcount{margin-left:8px;color:var(--muted);font-size:.9rem}
+.scrub{position:relative;margin-top:46px;padding-top:24px}
+.scrub .line{position:absolute;top:31px;left:0;right:0;height:3px;background:rgba(255,255,255,.12);border-radius:3px}
+.scrub .prog{position:absolute;top:31px;left:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold));border-radius:3px;transition:width .6s}
+.scrub .pts{position:relative;display:flex;justify-content:space-between}
+.pt{background:none;border:0;cursor:pointer;color:var(--muted);font:600 .75rem 'Outfit';display:flex;flex-direction:column;align-items:center;gap:10px;padding:0;min-width:0}
+.pt i{width:17px;height:17px;border-radius:50%;background:#0a1630;border:3px solid rgba(255,255,255,.3);transition:.3s}
+.pt.done i{border-color:var(--gold);background:var(--gold)}
+.pt.on i{transform:scale(1.5);box-shadow:0 0 0 6px rgba(245,197,24,.25)}
+.pt.on{color:var(--gold)}
+@media(max-width:700px){.pt span{display:none}}
+.photo-tip{margin-top:16px;color:var(--muted);font-size:.82rem}
+
+/* TIMELINE */
+.timeline{position:relative;margin-top:30px}
+.timeline:before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--gold),var(--blue));transform:translateX(-50%)}
+.t-item{width:50%;padding:0 40px 40px;position:relative;opacity:0;transform:translateY(40px);transition:.7s}
+.t-item.show{opacity:1;transform:none}
+.t-item:nth-child(odd){left:0;text-align:right}
+.t-item:nth-child(even){left:50%}
+.t-item:after{content:'';position:absolute;top:8px;width:16px;height:16px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(245,197,24,.25)}
+.t-item:nth-child(odd):after{right:-8px}
+.t-item:nth-child(even):after{left:-8px}
+.t-card{background:var(--navy2);border-radius:16px;padding:20px 22px;border:1px solid rgba(255,255,255,.07);cursor:pointer;transition:.25s;display:inline-block;text-align:left;max-width:440px}
+.t-card:hover{border-color:var(--gold)}
+.t-year{font-family:'Bebas Neue';font-size:2rem;color:var(--gold);line-height:1}
+.t-card h3{font-size:1.4rem;margin:2px 0 4px}
+.t-more{max-height:0;overflow:hidden;color:#b9c7e4;font-size:.95rem;transition:max-height .4s}
+.t-card.open .t-more{max-height:200px}
+.t-card .hint{font-size:.75rem;color:var(--sky)}
+@media(max-width:760px){
+  .timeline:before{left:10px}
+  .t-item,.t-item:nth-child(even){width:100%;left:0;text-align:left;padding:0 0 30px 36px}
+  .t-item:after,.t-item:nth-child(odd):after,.t-item:nth-child(even):after{left:2px;right:auto}
+}
+
+/* STATS */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.tab{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.2);padding:10px 22px;border-radius:30px;cursor:pointer;font:600 .95rem 'Outfit';transition:.2s}
+.tab.active,.tab:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.stat{background:var(--navy2);border-radius:14px;padding:20px;border-left:4px solid var(--gold)}
+.stat .v{font-family:'Bebas Neue';font-size:2.6rem;line-height:1}
+.stat .k{color:var(--muted);font-size:.85rem}
+.bar-row{margin-top:30px}
+.bar-row h3{font-size:1.5rem;margin-bottom:12px}
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:10px;font-size:.9rem}
+.bar .name{width:70px;color:var(--muted)}
+.bar .track{flex:1;height:14px;background:rgba(255,255,255,.07);border-radius:10px;overflow:hidden}
+.bar .fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--gold));border-radius:10px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bar .val{width:70px;text-align:right;font-weight:600}
+.note{color:var(--muted);font-size:.8rem;margin-top:14px}
+
+/* TROPHIES */
+.trophies{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.trophy{perspective:900px;height:250px;cursor:pointer}
+.trophy .inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.trophy:hover .inner,.trophy.flip .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
+.front{background:linear-gradient(160deg,#13295a,#0a1630);border:1px solid rgba(245,197,24,.3)}
+.front svg{width:80px;height:80px;margin-bottom:10px}
+.front h3{font-size:1.6rem;color:var(--gold)}
+.front small{color:var(--muted)}
+.back{background:linear-gradient(160deg,var(--gold),#e2a400);color:var(--navy);transform:rotateY(180deg);font-size:.95rem}
+.back b{font-family:'Bebas Neue';font-size:1.5rem;display:block;margin-bottom:6px}
+
+/* QUOTES */
+.quote-box{background:linear-gradient(135deg,#132b5f,#0b1a3a);border-radius:26px;padding:50px 40px;text-align:center;border:1px solid rgba(245,197,24,.2);min-height:240px;display:flex;flex-direction:column;justify-content:center}
+.quote-box blockquote{font-size:clamp(1.2rem,2.8vw,1.8rem);font-weight:300;transition:opacity .4s}
+.quote-box blockquote:before{content:'“';color:var(--gold);font-family:'Bebas Neue';font-size:4rem;display:block;line-height:.5;margin-bottom:10px}
+.quote-box cite{display:block;margin-top:14px;color:var(--gold);font-style:normal;font-size:.9rem;letter-spacing:2px}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;border:0}
+.dot.active{background:var(--gold);width:26px;border-radius:6px}
+
+/* QUIZ */
+.quiz{background:var(--navy2);border-radius:22px;padding:34px;max-width:720px;margin:0 auto;border:1px solid rgba(255,255,255,.08)}
+.quiz .q{font-size:1.25rem;font-weight:600;margin-bottom:18px}
+.opts{display:grid;gap:10px}
+.opt{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.12);color:var(--white);padding:13px 18px;border-radius:12px;cursor:pointer;text-align:left;font:400 1rem 'Outfit';transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--gold)}
+.opt.right{background:rgba(31,143,78,.3);border-color:#3ddc84}
+.opt.wrong{background:rgba(220,60,60,.25);border-color:#ff6b6b}
+.quiz-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;color:var(--muted);font-size:.9rem}
+.explain{margin-top:14px;color:var(--gold2);font-size:.95rem;min-height:1.4em}
+
+/* FAN WALL */
+.wall-form{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.wall-form input{flex:1;min-width:140px;background:var(--navy2);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;padding:13px 16px;color:var(--white);font:400 1rem 'Outfit'}
+.wall-form input:focus{outline:none;border-color:var(--gold)}
+.wall-form input#msg{flex:3}
+.notes{columns:3 240px;column-gap:16px}
+.note-card{break-inside:avoid;background:#fff8d6;color:#2a2a2a;border-radius:6px;padding:16px;margin-bottom:16px;box-shadow:0 6px 18px rgba(0,0,0,.3);transform:rotate(var(--r));animation:drop .5s}
+.note-card:nth-child(3n){background:#d9ecff}
+.note-card:nth-child(4n){background:#ffe0c2}
+.note-card b{display:block;margin-top:8px;font-size:.85rem;color:#555}
+@keyframes drop{from{opacity:0;transform:translateY(-20px) rotate(0)}}
+
+/* CHEER */
+.cheer{position:fixed;right:20px;bottom:20px;z-index:60;background:var(--gold);color:var(--navy);border:0;border-radius:50px;padding:14px 20px;font:800 1rem 'Outfit';cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:.2s}
+.cheer:hover{transform:scale(1.06)}
+.float7{position:fixed;font-family:'Bebas Neue';color:var(--gold);pointer-events:none;z-index:70;animation:up 2.2s ease-out forwards}
+@keyframes up{to{transform:translateY(-70vh) rotate(25deg);opacity:0}}
+
+footer{text-align:center;padding:60px 6vw;color:var(--muted);font-size:.9rem;background:#071027}
+footer .credit{margin-top:26px;display:inline-block;padding:10px 22px;border:1px solid rgba(245,197,24,.35);border-radius:30px;color:var(--white);font-size:.95rem}
+footer .credit{text-decoration:none;transition:.25s}
+footer .credit:hover{border-color:var(--gold);background:rgba(245,197,24,.1);transform:translateY(-2px)}
+footer .credit span{color:var(--gold);font-weight:800;letter-spacing:.5px}
+footer .big{font-family:'Bebas Neue';font-size:clamp(2.5rem,7vw,5rem);color:var(--gold);line-height:1}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s}
+.reveal.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">MSD<span>·7</span></div>
+  <ul>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#stats">Stats</a></li>
+    <li><a href="#trophies">Trophies</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#wall">Fan Wall</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="lights"><div class="light"></div><div class="light"></div></div>
+  <div class="hero-content">
+    <div class="big7">7</div>
+    <div class="eyebrow">A tribute to</div>
+    <h1>Mahendra Singh<br><em>Dhoni</em></h1>
+    <p class="tag">Captain Cool · The Finisher · <span class="typed" id="typed"></span></p>
+    <div class="btns">
+      <a href="#story" class="btn gold">Begin the journey</a>
+      <button class="btn ghost" id="heroHeli">💛 See the No. 7 jersey</button>
+    </div>
+  </div>
+  <svg class="stadium" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 140 Q720 40 1440 140 L1440 260 L0 260Z" fill="#0d2350"/>
+    <path d="M0 175 Q720 95 1440 175 L1440 260 L0 260Z" fill="#123a2a"/>
+    <path d="M0 205 Q720 145 1440 205 L1440 260 L0 260Z" fill="#1a5a37"/>
+    <ellipse cx="720" cy="232" rx="260" ry="26" fill="#2f7a46"/>
+    <rect x="690" y="222" width="60" height="18" rx="3" fill="#c9b27a" opacity=".7"/>
+  </svg>
+  <div class="scroll-hint">SCROLL ▾</div>
+</header>
+
+<div class="banner" aria-label="Latest news">
+  <div class="track">
+    <span>🏏 Nov 2026 — MS Dhoni retires from IPL playing duties after 19 seasons</span>
+    <span>💛 Named Chennai Super Kings mentor from IPL 2027</span>
+    <span>🏆 5 IPL titles · 278 IPL matches · 5,439 IPL runs</span>
+    <span>🇮🇳 The only captain to win all three ICC white-ball trophies</span>
+    <span>🏏 Nov 2026 — MS Dhoni retires from IPL playing duties after 19 seasons</span>
+    <span>💛 Named Chennai Super Kings mentor from IPL 2027</span>
+    <span>🏆 5 IPL titles · 278 IPL matches · 5,439 IPL runs</span>
+    <span>🇮🇳 The only captain to win all three ICC white-ball trophies</span>
+  </div>
+</div>
+
+<!-- COUNTERS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">By the numbers</div>
+    <h2>A career in figures</h2>
+    <div class="counters">
+      <div class="counter"><div class="num" data-to="538">0</div><div class="lbl">International matches</div></div>
+      <div class="counter"><div class="num" data-to="17266">0</div><div class="lbl">International runs</div></div>
+      <div class="counter"><div class="num" data-to="195">0</div><div class="lbl">International stumpings — a world record</div></div>
+      <div class="counter"><div class="num" data-to="3">0</div><div class="lbl">ICC trophies as captain</div></div>
+      <div class="counter"><div class="num" data-to="5">0</div><div class="lbl">IPL titles with CSK</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="wrap story">
+    <div class="reveal">
+      <div class="eyebrow">From Ranchi to the world</div>
+      <h2>The boy who became Thala</h2>
+      <p>Born on 7 July 1981 in Ranchi, Dhoni grew up playing football as a goalkeeper before a school coach put him behind the stumps. He worked as a ticket collector at Kharagpur railway station while chasing the dream on weekend pitches.</p>
+      <p>He debuted for India in December 2004 with long hair and a heavy bat. A few months later, a blistering 148 against Pakistan in Visakhapatnam announced him — and a 183* against Sri Lanka in Jaipur confirmed he was here to stay.</p>
+      <p>What followed was a captaincy built on calm: a World T20 win in 2007, India's first No.1 Test ranking in 2009, the 2011 World Cup sealed with a six, and the 2013 Champions Trophy. In yellow, he turned Chennai Super Kings into a family and won five IPL titles.</p>
+      <p>He left international cricket quietly on 15 August 2020, and in November 2026 hung up his IPL pads too — staying on with CSK as mentor.</p>
+    </div>
+    <div class="reveal">
+      <div class="art-card jersey-card" id="artCard">
+        <div class="jersey" id="jersey" title="Tap to flip">
+          <div class="jface jback">
+            <svg viewBox="0 0 400 430" aria-label="Yellow Chennai-style No. 7 jersey, back view, with DHONI printed on it">
+              <defs>
+                <linearGradient id="fab" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe14d"/><stop offset=".55" stop-color="#fdd116"/><stop offset="1" stop-color="#e6b800"/></linearGradient>
+                <path id="arc" d="M110 160 Q200 128 290 160"/>
+                <clipPath id="shirtClip"><path d="M120 62 L162 42 Q200 58 238 42 L280 62 L362 112 L330 178 L290 158 L290 395 Q200 410 110 395 L110 158 L70 178 L38 112 Z"/></clipPath>
+              </defs>
+              <path d="M200 8 q-14 0 -14 12 q0 8 10 10 l4 12" fill="none" stroke="#9fb0d0" stroke-width="4" stroke-linecap="round"/>
+              <path d="M120 62 L162 42 Q200 58 238 42 L280 62 L362 112 L330 178 L290 158 L290 395 Q200 410 110 395 L110 158 L70 178 L38 112 Z" fill="url(#fab)"/>
+              <g clip-path="url(#shirtClip)">
+                <rect x="104" y="150" width="14" height="260" fill="#1e3a8a"/><rect x="282" y="150" width="14" height="260" fill="#1e3a8a"/>
+                <path d="M362 112 L330 178" stroke="#1e3a8a" stroke-width="16"/><path d="M38 112 L70 178" stroke="#1e3a8a" stroke-width="16"/>
+                <path d="M110 380 Q200 396 290 380 L290 410 L110 410Z" fill="#1e3a8a"/>
+                <path d="M140 60 L170 200 M260 60 L230 200" stroke="#fff" stroke-opacity=".12" stroke-width="20"/>
+              </g>
+              <path d="M162 42 Q200 58 238 42" fill="none" stroke="#1e3a8a" stroke-width="8" stroke-linecap="round"/>
+              <text font-family="Bebas Neue" font-size="54" fill="#1e3a8a" letter-spacing="4" text-anchor="middle"><textPath href="#arc" startOffset="50%" id="backName">DHONI</textPath></text>
+              <text x="200" y="345" text-anchor="middle" font-family="Bebas Neue" font-size="200" fill="#1e3a8a" stroke="#f97316" stroke-width="4" paint-order="stroke">7</text>
+            </svg>
+          </div>
+          <div class="jface jfront">
+            <svg viewBox="0 0 400 430" aria-label="Yellow Chennai-style jersey, front view">
+              <path d="M200 8 q-14 0 -14 12 q0 8 10 10 l4 12" fill="none" stroke="#9fb0d0" stroke-width="4" stroke-linecap="round"/>
+              <path d="M120 62 L162 42 Q200 58 238 42 L280 62 L362 112 L330 178 L290 158 L290 395 Q200 410 110 395 L110 158 L70 178 L38 112 Z" fill="url(#fab)"/>
+              <g clip-path="url(#shirtClip)">
+                <rect x="104" y="150" width="14" height="260" fill="#1e3a8a"/><rect x="282" y="150" width="14" height="260" fill="#1e3a8a"/>
+                <path d="M362 112 L330 178" stroke="#1e3a8a" stroke-width="16"/><path d="M38 112 L70 178" stroke="#1e3a8a" stroke-width="16"/>
+                <path d="M110 380 Q200 396 290 380 L290 410 L110 410Z" fill="#1e3a8a"/>
+              </g>
+              <path d="M162 42 L200 96 L238 42" fill="none" stroke="#1e3a8a" stroke-width="9" stroke-linejoin="round"/>
+              <g fill="#1e3a8a"><path transform="translate(148 150)" d="M0 -11 L3.2 -3.5 L11 -3.4 L4.8 1.6 L6.8 9.5 L0 5 L-6.8 9.5 L-4.8 1.6 L-11 -3.4 L-3.2 -3.5Z"/><path transform="translate(174 150)" d="M0 -11 L3.2 -3.5 L11 -3.4 L4.8 1.6 L6.8 9.5 L0 5 L-6.8 9.5 L-4.8 1.6 L-11 -3.4 L-3.2 -3.5Z"/><path transform="translate(200 150)" d="M0 -11 L3.2 -3.5 L11 -3.4 L4.8 1.6 L6.8 9.5 L0 5 L-6.8 9.5 L-4.8 1.6 L-11 -3.4 L-3.2 -3.5Z"/><path transform="translate(226 150)" d="M0 -11 L3.2 -3.5 L11 -3.4 L4.8 1.6 L6.8 9.5 L0 5 L-6.8 9.5 L-4.8 1.6 L-11 -3.4 L-3.2 -3.5Z"/><path transform="translate(252 150)" d="M0 -11 L3.2 -3.5 L11 -3.4 L4.8 1.6 L6.8 9.5 L0 5 L-6.8 9.5 L-4.8 1.6 L-11 -3.4 L-3.2 -3.5Z"/></g>
+              <text x="200" y="232" text-anchor="middle" font-family="Bebas Neue" font-size="56" fill="#1e3a8a" letter-spacing="3">THALA</text>
+              <text x="200" y="262" text-anchor="middle" font-family="Outfit" font-weight="800" font-size="11" fill="#1e3a8a" letter-spacing="3">CHENNAI · SINCE 2008</text>
+              <text x="250" y="130" text-anchor="middle" font-family="Bebas Neue" font-size="44" fill="#1e3a8a" stroke="#f97316" stroke-width="2" paint-order="stroke">7</text>
+              <text x="200" y="340" text-anchor="middle" font-family="Bebas Neue" font-size="17" fill="#1e3a8a" opacity=".7" letter-spacing="1">2010 · 2011 · 2018 · 2021 · 2023</text>
+            </svg>
+          </div>
+        </div>
+        <div class="art-cap" id="jcap">Back view · tap the jersey to flip it</div>
+      </div>
+      <div class="btns" style="margin-top:16px">
+        <button class="btn gold" id="flipBtn">🔄 Flip jersey</button>
+      </div>
+      <form class="name-form" id="nameForm">
+        <input id="jname" maxlength="10" placeholder="Put your name on the back">
+        <button class="btn ghost" type="submit">Print</button>
+        <button class="btn ghost" type="button" id="jreset">Dhoni</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="journey" style="background:linear-gradient(#0a1630,#0c1c40)">
+  <div class="wrap">
+    <div class="eyebrow">13 chapters · 1981 → 2026</div>
+    <h2>The journey</h2>
+    <div class="jr">
+      <div class="stage" id="stage">
+        <div class="shade"></div>
+        <div class="pframe" id="pframe">
+          <img id="photo" alt="">
+        </div>
+        <div class="yr" id="yr" style="z-index:3"></div>
+      </div>
+      <div>
+        <div class="jtext" id="jtext">
+          <div class="era" id="era"></div>
+          <h3 id="jtitle"></h3>
+          <p id="jdesc"></p>
+          <div class="jstat"><b id="jsv"></b><span id="jsk"></span></div>
+        </div>
+        <div class="jctrl">
+          <button class="circ" id="jprev" aria-label="Previous">←</button>
+          <button class="circ" id="jplay" aria-label="Autoplay">▶</button>
+          <button class="circ" id="jnext" aria-label="Next">→</button>
+          <span class="jcount" id="jcount"></span>
+        </div>
+      </div>
+    </div>
+    <div class="scrub"><div class="line"></div><div class="prog" id="jprog"></div><div class="pts" id="pts"></div></div>
+    <p class="photo-tip">Swipe or use ← → keys to move between chapters.</p>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="wrap">
+    <div class="eyebrow">Career record</div>
+    <h2>Numbers that tell the story</h2>
+    <div class="tabs" id="tabs"></div>
+    <div class="stat-grid" id="statGrid"></div>
+    <div class="bar-row">
+      <h3>Runs by format</h3>
+      <div id="bars"></div>
+    </div>
+    <p class="note">Career figures as widely reported; IPL figures as reported on his IPL retirement in November 2026.</p>
+  </div>
+</section>
+
+<!-- TROPHIES -->
+<section id="trophies" style="background:#0c1c40">
+  <div class="wrap">
+    <div class="eyebrow">Hover or tap to flip</div>
+    <h2>The trophy cabinet</h2>
+    <div class="trophies" id="trophyGrid"></div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">In the spirit of Captain Cool</div>
+    <h2>Lessons from Mahi</h2>
+    <div class="quote-box">
+      <blockquote id="quoteText"></blockquote>
+      <cite id="quoteCite"></cite>
+      <div class="dots" id="dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" style="background:linear-gradient(#0a1630,#0c1c40)">
+  <div class="wrap">
+    <div class="eyebrow" style="text-align:center">Test yourself</div>
+    <h2 style="text-align:center">How well do you know Thala?</h2>
+    <div class="quiz">
+      <div class="q" id="qText"></div>
+      <div class="opts" id="qOpts"></div>
+      <div class="explain" id="qExplain"></div>
+      <div class="quiz-foot"><span id="qProg"></span><button class="btn gold" id="qNext" style="padding:10px 22px">Next →</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAN WALL -->
+<section id="wall">
+  <div class="wrap">
+    <div class="eyebrow">Leave your message</div>
+    <h2>The fan wall</h2>
+    <form class="wall-form" id="wallForm">
+      <input id="name" placeholder="Your name" maxlength="30" required>
+      <input id="msg" placeholder="Thank you, Mahi, for…" maxlength="160" required>
+      <button class="btn gold" type="submit">Pin it 📌</button>
+    </form>
+    <div class="notes" id="notes"></div>
+    <p class="note">Messages are saved in your browser only.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="big">Thank you, Mahi 💛</div>
+  <p style="margin-top:10px">Ranchi · Chennai · India · Forever No. 7</p>
+  <!-- Put your Instagram link below (replace YOUR_USERNAME) -->
+  <p><a class="credit" href="https://www.instagram.com/YOUR_USERNAME/" target="_blank" rel="noopener" aria-label="Praveen Maddy on Instagram">Site developed by <span>Praveen Maddy</span> 💛</a></p>
+  <p style="margin-top:14px;font-size:.8rem">A fan-made tribute. Not affiliated with MS Dhoni, BCCI, ICC or any franchise.</p>
+</footer>
+
+<button class="cheer" id="cheer">💛 Cheer 7</button>
+
+<script>
+// typed tagline
+const words=["World Cup Winner","Master of Stumpings","Thala for a reason","Mentor of CSK","Forever No. 7"];
+let wi=0,ci=0,del=false;const typedEl=document.getElementById('typed');
+(function type(){const w=words[wi];typedEl.textContent=w.slice(0,ci);
+  if(!del&&ci<w.length)ci++;else if(del&&ci>0)ci--;else if(!del){del=true;return setTimeout(type,1400)}else{del=false;wi=(wi+1)%words.length}
+  setTimeout(type,del?45:90)})();
+
+// reveal + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');
+  if(e.target.classList.contains('num'))countUp(e.target);io.unobserve(e.target)}}),{threshold:.2});
+document.querySelectorAll('.reveal,.num').forEach(el=>io.observe(el));
+function countUp(el){const to=+el.dataset.to,d=1600,s=performance.now();
+  (function f(t){const p=Math.min((t-s)/d,1),v=Math.floor(to*(1-Math.pow(1-p,3)));el.textContent=v.toLocaleString('en-IN');if(p<1)requestAnimationFrame(f)})(s)}
+
+// jersey
+const jersey=document.getElementById('jersey'),jcap=document.getElementById('jcap');
+function flipJ(){jersey.classList.toggle('flipped');jcap.textContent=jersey.classList.contains('flipped')?'Front view · five stars for five IPL titles':'Back view · tap the jersey to flip it'}
+jersey.onclick=flipJ;document.getElementById('flipBtn').onclick=flipJ;
+const backName=document.getElementById('backName');
+document.getElementById('nameForm').onsubmit=e=>{e.preventDefault();const v=document.getElementById('jname').value.trim().toUpperCase();if(!v)return;backName.textContent=v;jersey.classList.remove('flipped');jcap.textContent='Your name, Thala\'s number';burst(10)};
+document.getElementById('jreset').onclick=()=>{backName.textContent='DHONI';document.getElementById('jname').value='';jersey.classList.remove('flipped');jcap.textContent='Back view · tap the jersey to flip it'};
+document.getElementById('heroHeli').onclick=()=>{document.getElementById('story').scrollIntoView();setTimeout(()=>{jersey.classList.add('wave');setTimeout(()=>jersey.classList.remove('wave'),1200)},700)};
+
+// ===== YOUR DHONI PHOTOS (one per chapter) =====
+// Put an image file path or URL for each chapter, e.g. "photos/2011.jpg".
+// Leave "" to show the empty "Dhoni photo" frame. These show for every visitor.
+const JPHOTOS={
+ "1981":"http://praveenwebdesign.space/wp-content/uploads/2026/11/images-1.jpg",  // Roots – childhood / Ranchi
+ "2001":"http://praveenwebdesign.space/wp-content/uploads/2026/11/images-2.jpg",  // Ticket collector – Kharagpur
+ "2004":"http://praveenwebdesign.space/wp-content/uploads/2026/11/India_Today__MS_Dhoni-110705-S_1200x768.webp",  // ODI debut – long hair
+ "2005":"http://praveenwebdesign.space/wp-content/uploads/2026/11/images-3.jpg",  // 148 / 183*
+ "2007":"http://praveenwebdesign.space/wp-content/uploads/2026/11/103855270.webp",  // World T20 win
+ "2008":"http://praveenwebdesign.space/wp-content/uploads/2026/11/MS-Dhoni-3-1.jpg",  // CSK – first IPL
+ "2009":"http://praveenwebdesign.space/wp-content/uploads/2026/11/images-4.jpg",  // No. 1 Test ranking
+ "2011":"http://praveenwebdesign.space/wp-content/uploads/2026/11/307807.jpg",  // World Cup six
+ "2013":"http://praveenwebdesign.space/wp-content/uploads/2026/11/ms-dhoni-1537212-16x9_0.avif",  // Champions Trophy
+ "2014":"http://praveenwebdesign.space/wp-content/uploads/2026/11/images-5.jpg",  // Test retirement
+ "2020":"http://praveenwebdesign.space/wp-content/uploads/2026/11/122490-swibojdplx-1579167409.jpg",  // International farewell
+ "2023":"http://praveenwebdesign.space/wp-content/uploads/2026/11/images-6.jpg",  // 5th IPL title
+ "2026":"http://praveenwebdesign.space/wp-content/uploads/2026/11/417220.webp"   // Mentor
+};
+
+// ===== CINEMATIC JOURNEY =====
+const J=[
+ {y:"1981",era:"Chapter 1 · Roots",t:"A boy from Ranchi",d:"Born on 7 July 1981 in Ranchi. A school football goalkeeper whose coach moved him behind the stumps — and a legend's gloves were born.",sv:"7/7",sk:"the birthday behind jersey No. 7",sc:"home",bg:["#1a3a7a","#f59e0b"]},
+ {y:"2001",era:"Chapter 2 · The grind",t:"The ticket collector",d:"Worked as a TTE at Kharagpur railway station, playing railway and domestic cricket on weekends while the dream stayed alive.",sv:"2001–03",sk:"years at Kharagpur station",sc:"train",bg:["#3a1f5c","#ff7a59"]},
+ {y:"2004",era:"Chapter 3 · Debut",t:"Long hair, big bat",d:"ODI debut against Bangladesh in Chittagong in December 2004 — run out for a duck on the first ball. Nobody imagined what came next.",sv:"0",sk:"runs on debut, 10,773 later",sc:"bat",bg:["#0d3b66","#5aa9ff"]},
+ {y:"2005",era:"Chapter 4 · Arrival",t:"148, then 183*",d:"A blazing 148 against Pakistan in Visakhapatnam, then 183* against Sri Lanka in Jaipur — the highest ODI score by a wicketkeeper.",sv:"183*",sk:"highest ODI score",sc:"sixes",bg:["#0b4d3c","#4ade80"]},
+ {y:"2007",era:"Chapter 5 · Captain",t:"World T20 champions",d:"A first-time captain with a young team won the inaugural World T20 in Johannesburg, trusting Joginder Sharma with the final over.",sv:"5",sk:"run win over Pakistan in the final",sc:"cup",bg:["#1e3a8a","#38bdf8"]},
+ {y:"2008",era:"Chapter 6 · Yellow",t:"Thala of Chennai",d:"Picked by Chennai Super Kings in the very first IPL auction. A city adopted him — and he adopted it right back.",sv:"19",sk:"years with Chennai",sc:"yellow",bg:["#a16207","#fde047"]},
+ {y:"2009",era:"Chapter 7 · Summit",t:"No. 1 in Tests",d:"Under his leadership India rose to the top of the ICC Test rankings for the first time.",sv:"#1",sk:"ICC Test ranking",sc:"crown",bg:["#312e81","#a78bfa"]},
+ {y:"2011",era:"Chapter 8 · Destiny",t:"The six at Wankhede",d:"Promoted himself in the final, made 91* and finished it with a six. India's first 50-over World Cup in 28 years.",sv:"91*",sk:"in the World Cup final",sc:"night",bg:["#0a1a4a","#f5c518"]},
+ {y:"2013",era:"Chapter 9 · The full set",t:"Champions Trophy",d:"Victory at Edgbaston made him the only captain to win all three ICC white-ball trophies.",sv:"3/3",sk:"ICC white-ball trophies",sc:"cup",bg:["#14532d","#86efac"]},
+ {y:"2014",era:"Chapter 10 · Letting go",t:"Goodbye, whites",d:"Stepped away from Test cricket mid-series in Australia in December 2014, after 90 Tests — quietly, on his own terms.",sv:"90",sk:"Test matches",sc:"stumps",bg:["#3f3f46","#e4e4e7"]},
+ {y:"2020",era:"Chapter 11 · Farewell",t:"Consider me retired",d:"On 15 August 2020 a simple social-media post ended his international career. A nation paused.",sv:"538",sk:"international matches",sc:"sunset",bg:["#7c2d12","#fb923c"]},
+ {y:"2023",era:"Chapter 12 · Encore",t:"Title number five",d:"Led Chennai Super Kings to a record-equalling fifth IPL crown — with a city roaring his name.",sv:"5",sk:"IPL titles",sc:"yellow",bg:["#854d0e","#facc15"]},
+ {y:"2026",era:"Chapter 13 · Mentor",t:"Pads off, wisdom on",d:"Retired from IPL playing duties in November 2026 after 19 years, staying with CSK as mentor from 2027.",sv:"278",sk:"IPL matches played",sc:"mentor",bg:["#0f2147","#f5c518"]}
+];
+function scene(type,c1,c2){
+ const sky=`<defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="#050c1c"/></linearGradient><radialGradient id="gl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${c2}" stop-opacity=".9"/><stop offset="1" stop-color="${c2}" stop-opacity="0"/></radialGradient></defs><rect width="400" height="300" fill="url(#sk)"/>`;
+ const ground=`<path d="M0 240 Q200 205 400 240 V300 H0Z" fill="#14532d"/><path d="M0 258 Q200 230 400 258 V300 H0Z" fill="#166534"/>`;
+ const stars=[...Array(18)].map((_,i)=>`<circle cx="${(i*53)%400}" cy="${(i*37)%140}" r="${i%3?1:1.6}" fill="#fff" opacity=".6"/>`).join('');
+ const S={
+  home:`${sky}<circle cx="300" cy="90" r="70" fill="url(#gl)"/><circle cx="300" cy="90" r="30" fill="${c2}"/>${ground}<g fill="#0b1a3a"><rect x="40" y="185" width="70" height="60"/><path d="M32 188 L75 150 L118 188Z"/><rect x="130" y="200" width="50" height="45"/><path d="M124 203 L155 175 L186 203Z"/></g><g fill="#fde68a"><rect x="58" y="200" width="14" height="14"/><rect x="146" y="212" width="12" height="12"/></g><circle cx="270" cy="250" r="9" fill="#fff"/><path d="M262 246 l16 8 M270 241 v18" stroke="#111" stroke-width="1.5"/><rect x="300" y="200" width="40" height="40" fill="none" stroke="#fff" stroke-width="3"/>`,
+  train:`${sky}<circle cx="80" cy="80" r="80" fill="url(#gl)"/>${ground}<rect x="0" y="232" width="400" height="6" fill="#444"/><g><rect x="70" y="170" width="240" height="60" rx="10" fill="#1d4ed8"/><rect x="300" y="180" width="60" height="50" rx="8" fill="#1e40af"/><path d="M360 190 q20 10 20 40 h-20z" fill="#1e3a8a"/>${[90,140,190,240].map(x=>`<rect x="${x}" y="182" width="34" height="22" rx="3" fill="#fde68a"/>`).join('')}<rect x="70" y="210" width="290" height="6" fill="${c2}"/>${[100,160,230,290,340].map(x=>`<circle cx="${x}" cy="234" r="10" fill="#111"/>`).join('')}</g><g fill="#fff" opacity=".5"><circle cx="330" cy="150" r="10"/><circle cx="345" cy="130" r="14"/><circle cx="365" cy="105" r="18"/></g>`,
+  bat:`${sky}<circle cx="200" cy="120" r="140" fill="url(#gl)"/>${stars}${ground}<g transform="rotate(-25 200 160)"><rect x="190" y="40" width="20" height="70" rx="6" fill="#111"/><path d="M180 110 h40 l-4 140 q-16 14 -32 0z" fill="#e8c88f" stroke="#a9884f" stroke-width="3"/><text x="200" y="200" text-anchor="middle" font-family="Bebas Neue" font-size="30" fill="#a9884f" transform="rotate(90 200 190)">MSD 7</text></g>`,
+  sixes:`${sky}${stars}<circle cx="200" cy="140" r="150" fill="url(#gl)"/>${ground}${[0,1,2,3,4,5].map(i=>`<path d="M60 240 Q${150+i*20} ${40-i*6} ${300+i*15} ${80+i*8}" fill="none" stroke="#fff" stroke-dasharray="4 6" stroke-width="2" opacity="${.3+i*.1}"/>`).join('')}<circle cx="375" cy="120" r="8" fill="#fff" stroke="#c33" stroke-width="2"/><text x="60" y="110" font-family="Bebas Neue" font-size="72" fill="${c2}">183*</text>`,
+  cup:`${sky}${stars}<circle cx="200" cy="140" r="150" fill="url(#gl)"/>${ground}<g transform="translate(140 60)"><path d="M20 10h80v40a40 40 0 0 1-80 0z" fill="#f5c518"/><path d="M20 20H0a24 24 0 0 0 24 32M100 20h20a24 24 0 0 1-24 32" fill="none" stroke="#f5c518" stroke-width="7"/><rect x="52" y="88" width="16" height="30" fill="#e2a400"/><rect x="28" y="118" width="64" height="18" rx="3" fill="#b45309"/><path d="M38 20 q10 30 4 50" stroke="#fff8" stroke-width="5" fill="none"/></g>${[...Array(26)].map((_,i)=>`<rect x="${(i*61)%400}" y="${(i*29)%200}" width="6" height="12" fill="${['#f5c518','#fff','#5aa9ff','#4ade80'][i%4]}" transform="rotate(${i*25} ${(i*61)%400} ${(i*29)%200})"/>`).join('')}`,
+  yellow:`${sky}<circle cx="200" cy="60" r="160" fill="url(#gl)"/><g>${[...Array(9)].map((_,r)=>[...Array(24)].map((_,c)=>`<circle cx="${c*17+(r%2)*8}" cy="${130+r*12}" r="6" fill="${(r+c)%5?'#facc15':'#1d4ed8'}" opacity="${.5+r*.05}"/>`).join('')).join('')}</g><path d="M0 250 Q200 225 400 250 V300 H0Z" fill="#166534"/><text x="200" y="100" text-anchor="middle" font-family="Bebas Neue" font-size="64" fill="#fff">THALA</text>`,
+  crown:`${sky}${stars}<circle cx="200" cy="130" r="150" fill="url(#gl)"/>${ground}<path d="M110 190 L120 100 L160 145 L200 80 L240 145 L280 100 L290 190Z" fill="#f5c518" stroke="#b45309" stroke-width="4"/><circle cx="200" cy="80" r="9" fill="#ef4444"/><circle cx="120" cy="100" r="7" fill="#3b82f6"/><circle cx="280" cy="100" r="7" fill="#3b82f6"/><text x="200" y="180" text-anchor="middle" font-family="Bebas Neue" font-size="44" fill="#0a1630">No. 1</text>`,
+  night:`<rect width="400" height="300" fill="#050c1c"/>${stars}<g><rect x="30" y="40" width="40" height="14" fill="#fff"/><rect x="330" y="40" width="40" height="14" fill="#fff"/></g><path d="M50 54 L0 260 H160Z" fill="#fff" opacity=".07"/><path d="M350 54 L240 260 H400Z" fill="#fff" opacity=".07"/>${[...Array(40)].map((_,i)=>`<circle cx="${(i*41)%400}" cy="${60+(i*23)%120}" r="2.5" fill="${['#f5c518','#fff','#ff9933','#138808'][i%4]}"/>`).join('')}<path d="M0 230 Q200 195 400 230 V300 H0Z" fill="#14532d"/><path d="M190 240 Q260 40 380 30" fill="none" stroke="${c2}" stroke-width="3" stroke-dasharray="2 8"/><circle cx="380" cy="30" r="8" fill="#fff"/><text x="40" y="200" font-family="Bebas Neue" font-size="90" fill="${c2}" opacity=".95">SIX</text>`,
+  stumps:`${sky}<circle cx="200" cy="200" r="150" fill="url(#gl)"/>${ground}<g fill="#f4f1e8"><rect x="170" y="130" width="10" height="110"/><rect x="195" y="130" width="10" height="110"/><rect x="220" y="130" width="10" height="110"/><rect x="166" y="124" width="34" height="6" rx="3"/><rect x="200" y="124" width="34" height="6" rx="3"/></g><g transform="translate(260 200) rotate(-15)"><path d="M0 0 q30-30 60 0 v30 h-60z" fill="#f4f1e8"/></g>`,
+  sunset:`<defs><linearGradient id="ss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1b4b"/><stop offset=".55" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><rect width="400" height="300" fill="url(#ss)"/><circle cx="200" cy="215" r="60" fill="#fde047" opacity=".9"/><path d="M0 220 Q200 200 400 220 V300 H0Z" fill="#1c1917"/><g fill="#1c1917"><rect x="192" y="160" width="16" height="45" rx="5"/><circle cx="200" cy="150" r="10"/><rect x="215" y="150" width="5" height="50" transform="rotate(20 215 150)"/></g><text x="200" y="60" text-anchor="middle" font-family="Bebas Neue" font-size="40" fill="#fff" opacity=".9">15 · 08 · 2020</text>`,
+  mentor:`${sky}${stars}<circle cx="200" cy="140" r="150" fill="url(#gl)"/>${ground}<rect x="130" y="70" width="140" height="170" rx="10" fill="#f4f1e8"/><rect x="170" y="58" width="60" height="22" rx="6" fill="#64748b"/><g stroke="#1e3a8a" stroke-width="3" fill="none"><circle cx="165" cy="130" r="8"/><circle cx="235" cy="170" r="8"/><path d="M160 190 l14 14 M174 190 l-14 14"/><path d="M175 135 Q210 130 228 165" stroke-dasharray="5 5"/></g><text x="200" y="230" text-anchor="middle" font-family="Bebas Neue" font-size="26" fill="#0a1630">MENTOR · 2027</text>`
+ };
+ return `<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">${S[type]}</svg>`;
+}
+let jI=0,jTimer=null;
+const $=id=>document.getElementById(id);
+const stage=$('stage'),jtext=$('jtext'),ptsEl=$('pts');
+const pframe=$('pframe'),photoEl=$('photo');
+function getPhoto(i){return JPHOTOS[J[i].y]||''}
+photoEl.onerror=()=>{pframe.classList.remove('filled');photoEl.removeAttribute('src')};
+function setFrame(i){const p=getPhoto(i),c=J[i];
+  pframe.classList.toggle('filled',!!p);
+  if(p)photoEl.src=p;else photoEl.removeAttribute('src');
+  photoEl.alt=p?`MS Dhoni — ${c.t} (${c.y})`:'';
+  }
+J.forEach((c,i)=>{const b=document.createElement('button');b.className='pt';b.innerHTML=`<i></i><span>${c.y}</span>`;b.onclick=()=>{stopPlay();goJ(i)};ptsEl.appendChild(b)});
+function goJ(i){jI=(i+J.length)%J.length;const c=J[jI];
+ jtext.classList.add('out');stage.classList.remove('anim');
+ setTimeout(()=>{
+  setFrame(jI);
+  $('yr').textContent=c.y;$('era').textContent=c.era;$('jtitle').textContent=c.t;$('jdesc').textContent=c.d;$('jsv').textContent=c.sv;$('jsk').textContent=c.sk;
+  $('jcount').textContent=`${String(jI+1).padStart(2,'0')} / ${J.length}`;
+  $('journey').style.background=`radial-gradient(ellipse at 20% 30%, ${c.bg[0]}55, transparent 60%), linear-gradient(#0a1630,#0c1c40)`;
+  jtext.classList.remove('out');requestAnimationFrame(()=>stage.classList.add('anim'));
+ },300);
+ [...ptsEl.children].forEach((b,k)=>{b.classList.toggle('on',k===jI);b.classList.toggle('done',k<=jI)});
+ $('jprog').style.width=(jI/(J.length-1)*100)+'%';
+}
+function stopPlay(){clearInterval(jTimer);jTimer=null;$('jplay').textContent='▶'}
+$('jprev').onclick=()=>{stopPlay();goJ(jI-1)};$('jnext').onclick=()=>{stopPlay();goJ(jI+1)};
+$('jplay').onclick=()=>{if(jTimer)return stopPlay();$('jplay').textContent='❚❚';goJ(jI+1);jTimer=setInterval(()=>goJ(jI+1),4500)};
+document.addEventListener('keydown',e=>{const r=$('journey').getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){if(e.key==='ArrowRight'){stopPlay();goJ(jI+1)}if(e.key==='ArrowLeft'){stopPlay();goJ(jI-1)}}});
+let tx=null;stage.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+stage.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){stopPlay();goJ(jI+(dx<0?1:-1))}tx=null});
+goJ(0);
+
+// stats
+const stats={
+ ODI:{Matches:350,Runs:"10,773",Average:"50.57","Highest":"183*",Hundreds:10,Stumpings:123},
+ Test:{Matches:90,Runs:"4,876",Average:"38.09","Highest":"224",Hundreds:6,Stumpings:38},
+ T20I:{Matches:98,Runs:"1,617",Average:"37.60","Highest":"56",Fifties:2,Stumpings:34},
+ IPL:{Matches:278,Runs:"5,439",Titles:5,Seasons:"2008–25","Final role":"Mentor 2027"}
+};
+const tabsEl=document.getElementById('tabs'),grid=document.getElementById('statGrid');
+function showStats(f){[...tabsEl.children].forEach(b=>b.classList.toggle('active',b.textContent===f));
+  grid.innerHTML=Object.entries(stats[f]).map(([k,v])=>`<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join('')}
+Object.keys(stats).forEach(f=>{const b=document.createElement('button');b.className='tab';b.textContent=f;b.onclick=()=>showStats(f);tabsEl.appendChild(b)});
+showStats('ODI');
+const runs=[["ODI",10773],["IPL",5439],["Test",4876],["T20I",1617]];
+document.getElementById('bars').innerHTML=runs.map(([n,v])=>`<div class="bar"><span class="name">${n}</span><div class="track"><div class="fill" data-w="${v/10773*100}"></div></div><span class="val">${v.toLocaleString('en-IN')}</span></div>`).join('');
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');o.disconnect()}}),{threshold:.3}).observe(document.getElementById('bars'));
+
+// trophies
+const cup='<svg viewBox="0 0 64 64"><path d="M18 8h28v14a14 14 0 0 1-28 0z" fill="#f5c518"/><path d="M18 12H9a9 9 0 0 0 9 12M46 12h9a9 9 0 0 1-9 12" fill="none" stroke="#f5c518" stroke-width="3"/><rect x="29" y="36" width="6" height="10" fill="#e2a400"/><rect x="20" y="46" width="24" height="8" rx="2" fill="#e2a400"/></svg>';
+const trophies=[
+ ["2007","ICC World T20","Beat Pakistan by 5 runs in Johannesburg. Dhoni handed the last over to Joginder Sharma — a captain's gamble that paid off."],
+ ["2011","ICC World Cup","Promoted himself above Yuvraj in the final and finished with a six off Kulasekara. 91* and Player of the Final."],
+ ["2013","Champions Trophy","Rain-shortened 20-over final vs England at Edgbaston — India defended 129 to complete the ICC set."],
+ ["2010 · 11 · 18 · 21 · 23","5 IPL titles","Five championships with Chennai Super Kings, plus Champions League T20 titles in 2010 and 2014."],
+ ["2008 · 09 · 18","National honours","Rajiv Gandhi Khel Ratna (2008), Padma Shri (2009) and Padma Bhushan (2018)."],
+ ["2011","Honorary Lt Colonel","Conferred the honorary rank of Lieutenant Colonel in the Territorial Army."]
+];
+document.getElementById('trophyGrid').innerHTML=trophies.map(([y,t,d])=>`<div class="trophy" onclick="this.classList.toggle('flip')"><div class="inner"><div class="face front">${cup}<h3>${t}</h3><small>${y}</small></div><div class="face back"><b>${t}</b>${d}</div></div></div>`).join('');
+
+// quotes (paraphrased lessons, not verbatim quotes)
+const qs=[
+ ["Focus on the process, and the results will take care of themselves.","The Dhoni process"],
+ ["Stay calm when the pressure is highest — that is when clear thinking matters most.","Captain Cool"],
+ ["Back your players, give them a role, and let them grow into it.","The CSK way"],
+ ["Take the game deep. The finish belongs to whoever keeps their nerve.","The Finisher"],
+ ["Leave quietly, and let the work speak.","15 August 2020"]
+];
+let qi=0;const qT=document.getElementById('quoteText'),qC=document.getElementById('quoteCite'),dots=document.getElementById('dots');
+qs.forEach((_,i)=>{const d=document.createElement('button');d.className='dot';d.ariaLabel='Lesson '+(i+1);d.onclick=()=>{qi=i;showQ()};dots.appendChild(d)});
+function showQ(){qT.style.opacity=0;setTimeout(()=>{qT.textContent=qs[qi][0];qC.textContent='— '+qs[qi][1].toUpperCase();qT.style.opacity=1},300);[...dots.children].forEach((d,i)=>d.classList.toggle('active',i===qi))}
+showQ();setInterval(()=>{qi=(qi+1)%qs.length;showQ()},5500);
+
+// quiz
+const quiz=[
+ ["In which city was Dhoni born?",["Jamshedpur","Ranchi","Kolkata","Patna"],1,"Ranchi — on 7 July 1981."],
+ ["What is Dhoni's famous jersey number?",["10","18","7","45"],2,"No. 7 — matching his birth date, 7/7."],
+ ["What was his highest ODI score?",["148","183*","224","91*"],1,"183* vs Sri Lanka at Jaipur, 2005."],
+ ["Which job did he do before cricket fame?",["Bank clerk","Railway ticket collector","Teacher","Postman"],1,"He was a TTE at Kharagpur railway station."],
+ ["Which sport did he play as a goalkeeper in school?",["Hockey","Football","Handball","Water polo"],1,"Football — his coach spotted his glovework."],
+ ["How many IPL titles did he win with CSK?",["3","4","5","6"],2,"Five: 2010, 2011, 2018, 2021 and 2023."],
+ ["What role will Dhoni take at CSK from 2027?",["Head coach","Owner","Mentor","Commentator"],2,"He was named CSK mentor after retiring from IPL playing duties in November 2026."]
+];
+let qn=0,score=0;const qText=document.getElementById('qText'),qOpts=document.getElementById('qOpts'),qExp=document.getElementById('qExplain'),qProg=document.getElementById('qProg'),qNext=document.getElementById('qNext');
+function renderQ(){qExp.textContent='';qNext.style.visibility='hidden';
+  if(qn>=quiz.length){qText.textContent=`You scored ${score}/${quiz.length}! ${score>=6?'True Thala fan 💛':score>=4?'Solid knock 🏏':'Time for a rewatch 😄'}`;qOpts.innerHTML='';qProg.textContent='';qNext.textContent='Play again';qNext.style.visibility='visible';return}
+  const [q,o]=quiz[qn];qText.textContent=q;qProg.textContent=`Question ${qn+1} of ${quiz.length} · Score ${score}`;qNext.textContent='Next →';
+  qOpts.innerHTML='';o.forEach((t,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=t;b.onclick=()=>answer(i);qOpts.appendChild(b)})}
+function answer(i){const [, ,c,ex]=quiz[qn];[...qOpts.children].forEach((b,j)=>{b.disabled=true;if(j===c)b.classList.add('right');else if(j===i)b.classList.add('wrong')});
+  if(i===c){score++;qExp.textContent='✅ '+ex}else qExp.textContent='❌ '+ex;qNext.style.visibility='visible';qProg.textContent=`Question ${qn+1} of ${quiz.length} · Score ${score}`}
+qNext.onclick=()=>{if(qn>=quiz.length){qn=0;score=0}else qn++;renderQ()};renderQ();
+
+// fan wall
+const seed=[["Arjun","2011 final, that six. I was 12 and I still get goosebumps."],["Priya","Whistle Podu forever! Thank you for making Chennai your home."],["Rahul","Taught a generation that calm is a superpower."]];
+let notes=seed;try{const s=JSON.parse(localStorage.getItem('msdWall')||'null');if(s)notes=s}catch(e){}
+const notesEl=document.getElementById('notes');
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function drawNotes(){notesEl.innerHTML=notes.slice().reverse().map(([n,m],i)=>`<div class="note-card" style="--r:${(i%2?1:-1)*(1+i%3)}deg">${esc(m)}<b>— ${esc(n)}</b></div>`).join('')}
+drawNotes();
+document.getElementById('wallForm').onsubmit=e=>{e.preventDefault();const n=document.getElementById('name'),m=document.getElementById('msg');
+  notes.push([n.value.trim(),m.value.trim()]);try{localStorage.setItem('msdWall',JSON.stringify(notes))}catch(err){}drawNotes();m.value='';burst(12)};
+
+// cheer burst
+function burst(k){for(let i=0;i<k;i++){const s=document.createElement('div');s.className='float7';s.textContent=Math.random()>.4?'7':'💛';
+  s.style.left=(10+Math.random()*80)+'vw';s.style.top='90vh';s.style.fontSize=(1.5+Math.random()*2.5)+'rem';s.style.animationDelay=(Math.random()*.4)+'s';
+  document.body.appendChild(s);setTimeout(()=>s.remove(),2800)}}
+document.getElementById('cheer').onclick=()=>burst(20);
+</script>
+</body>
+</html>

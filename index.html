@@ -51,6 +51,42 @@ nav a:hover{opacity:1;color:var(--gold)}
 .btn.gold:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(245,197,24,.4)}
 .btn.ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.35)}
 .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+/* HERO v2 — split layout with Dhoni photo */
+.hero{display:block;text-align:left;padding:110px 6vw 140px}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 20%;filter:blur(18px) saturate(1.2);opacity:.22;transform:scale(1.15);z-index:0}
+.hero-bg:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 10%,rgba(10,22,48,.4) 60%,var(--navy) 100%)}
+.hero-grid{position:relative;z-index:2;max-width:1200px;margin:0 auto;min-height:calc(100vh - 250px);display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero-content{padding-top:0}
+.hero .big7{left:auto;right:-4%;top:46%;transform:translateY(-50%);font-size:clamp(16rem,42vw,36rem);-webkit-text-stroke:2px rgba(245,197,24,.18)}
+.hero h1{font-size:clamp(3.4rem,8.5vw,7.4rem);margin-top:6px}
+.hero h1 em{background:linear-gradient(90deg,var(--gold),#ffb300,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .btns{justify-content:flex-start}
+.hero-chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hchip{background:rgba(255,255,255,.06);border:1px solid rgba(245,197,24,.3);border-radius:14px;padding:10px 16px;backdrop-filter:blur(6px)}
+.hchip b{display:block;font-family:'Bebas Neue';font-size:1.9rem;color:var(--gold);line-height:1}
+.hchip span{font-size:.75rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.hero-photo{position:relative;justify-self:center;width:min(100%,470px);aspect-ratio:4/5}
+.hero-photo .ring{position:absolute;inset:6% -4% -2%;border-radius:50% 50% 46% 46%;background:radial-gradient(circle at 50% 40%,rgba(245,197,24,.55),rgba(30,111,255,.25) 55%,transparent 72%);filter:blur(10px);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.05);opacity:.8}}
+.hero-photo .frame{position:absolute;inset:0;border-radius:200px 200px 28px 28px;overflow:hidden;border:2px solid rgba(245,197,24,.55);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 10px rgba(245,197,24,.06)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transform:scale(1.04);animation:kb 14s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.12) translateY(-2%)}}
+.hero-photo .frame:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,22,48,.85))}
+.hero-photo .badge{position:absolute;left:-26px;bottom:38px;z-index:3;background:var(--gold);color:var(--navy);border-radius:16px;padding:12px 18px;box-shadow:0 14px 30px rgba(0,0,0,.45);transform:rotate(-4deg)}
+.hero-photo .badge b{font-family:'Bebas Neue';font-size:2.4rem;line-height:.9;display:block}
+.hero-photo .badge span{font-size:.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.hero-photo .tag7{position:absolute;right:-14px;top:30px;z-index:3;width:78px;height:78px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);display:grid;place-items:center;font-family:'Bebas Neue';font-size:2.8rem;color:var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.5);animation:bob2 3s ease-in-out infinite}
+@keyframes bob2{50%{transform:translateY(-8px)}}
+.hero-photo.nophoto{display:none}
+@media(max-width:900px){
+  .hero{text-align:center;padding-top:90px}
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .hero-photo{order:-1;width:min(78vw,340px)}
+  .hero .btns,.hero-chips{justify-content:center}
+  .hero .big7{right:50%;transform:translate(50%,-50%)}
+  .hero-photo .badge{left:-10px}
+  .hero-photo .tag7{right:-6px;width:62px;height:62px;font-size:2.2rem}
+}
 .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:.75rem;letter-spacing:3px;color:var(--muted);z-index:3;animation:bob 2s infinite}
 @keyframes bob{50%{transform:translate(-50%,8px)}}
 
@@ -244,15 +280,29 @@ footer .big{font-family:'Bebas Neue';font-size:clamp(2.5rem,7vw,5rem);color:var(
 
 <!-- HERO -->
 <header class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
   <div class="lights"><div class="light"></div><div class="light"></div></div>
-  <div class="hero-content">
-    <div class="big7">7</div>
-    <div class="eyebrow">A tribute to</div>
-    <h1>Mahendra Singh<br><em>Dhoni</em></h1>
-    <p class="tag">Captain Cool · The Finisher · <span class="typed" id="typed"></span></p>
-    <div class="btns">
-      <a href="#story" class="btn gold">Begin the journey</a>
-      <button class="btn ghost" id="heroHeli">💛 See the No. 7 jersey</button>
+  <div class="big7">7</div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="eyebrow">A tribute to</div>
+      <h1>Mahendra Singh<br><em>Dhoni</em></h1>
+      <p class="tag">Captain Cool · The Finisher · <span class="typed" id="typed"></span></p>
+      <div class="btns">
+        <a href="#story" class="btn gold">Begin the journey</a>
+        <button class="btn ghost" id="heroHeli">💛 See the No. 7 jersey</button>
+      </div>
+      <div class="hero-chips">
+        <div class="hchip"><b>3</b><span>ICC trophies</span></div>
+        <div class="hchip"><b>5</b><span>IPL titles</span></div>
+        <div class="hchip"><b>538</b><span>Intl matches</span></div>
+      </div>
+    </div>
+    <div class="hero-photo" id="heroPhoto">
+      <div class="ring"></div>
+      <div class="frame"><img id="heroImg" alt="MS Dhoni"></div>
+      <div class="tag7">7</div>
+      <div class="badge"><b>Captain Cool</b><span>Thala for a reason</span></div>
     </div>
   </div>
   <svg class="stadium" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
@@ -469,6 +519,15 @@ footer .big{font-family:'Bebas Neue';font-size:clamp(2.5rem,7vw,5rem);color:var(
 <button class="cheer" id="cheer">💛 Cheer 7</button>
 
 <script>
+// ===== HERO PHOTO =====
+// Change this to any Dhoni photo URL you like (a tall/portrait photo looks best).
+const HERO_PHOTO="http://praveenwebdesign.space/wp-content/uploads/2026/11/417220.webp";
+(function(){const img=document.getElementById('heroImg'),box=document.getElementById('heroPhoto'),bg=document.getElementById('heroBg');
+  if(!HERO_PHOTO){box.classList.add('nophoto');return}
+  img.onload=()=>{bg.style.backgroundImage=`url("${HERO_PHOTO}")`};
+  img.onerror=()=>box.classList.add('nophoto');
+  img.src=HERO_PHOTO})();
+
 // typed tagline
 const words=["World Cup Winner","Master of Stumpings","Thala for a reason","Mentor of CSK","Forever No. 7"];
 let wi=0,ci=0,del=false;const typedEl=document.getElementById('typed');
